@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, height=device-height,maximum-scale=2, user-scalable=no"/>
+	<title>Pacientes - Agenda Medica</title>
+	<link rel="stylesheet" type="text/css" href="estilo.css">
+	<link rel="stylesheet" href="dist/fonts/foundation-icons.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="dist/css/foundation.css" />
+	<script src="dist/js/jquery.js"></script>
+    <script src="dist/js/modernizr.js"></script>
+	<style type="text/css">
+		/*ESCONDER CAJAS POR MEDIO DE CLASES*/
+		body .invisible{display:none;}
+	    body .visible{display:display;}
+	    body .visiblei{display:display !important}
+		/*REGLAS: class="va1-var2"
+		var1= visible || hidden; (mostrar || esconder)
+		var2= phone || tablet || desktop; (telefono || tableta || PC)
+		*armar convinacion adecuada* */
+	    .hidden{display:none;visibility:hidden}
+	    .visible-phone{display:none !important}
+	    .visible-tablet{display:none !important}
+	    .hidden-desktop{display:none !important}
+	    .visible-desktop{display:inherit !important}
+	    @media (min-width: 768px) and (max-width: 979px){.hidden-desktop{display:inherit !important}
+	    .visible-desktop{display:none !important}
+	    .visible-tablet{display:inherit !important}
+	    .hidden-tablet{display:none !important}}
+	    @media (max-width: 767px){.hidden-desktop{display:inherit !important}
+	    .visible-desktop{display:none !important}
+	    .visible-phone{display:inherit !important}
+	    .hidden-phone{display:none !important}}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div id="logoAndNotifications" onclick="notificationButton()">
+			<a>
+				<div id="logo"><p>MedicDate.0.1</p></div>
+				<div id="notifications" class="activeNotific">
+					<i class="step fi-bookmark"></i>
+				</div>
+				<div id="num">6</div>
+			</a>
+		</div>
+		<script type="text/javascript">
+			var movileNavButtonActive = false;
+			function movileNavButton(){
+				if(movileNavButtonActive){
+					document.getElementById('movileNav').className = "hidden";
+					movileNavButtonActive = false;
+				}
+				else{
+					document.getElementById('movileNav').className="active";
+					movileNavButtonActive = true;
+				}
+				if(notificationListActive){
+					document.getElementById('notification').className = "hidden";
+					notificationListActive = false;
+				}
+			}
+		</script>
+		<div id="navigator">
+			<a class="visible-phone" onclick="movileNavButton()">
+				<div id="movileNavButton"><i class="step fi-list" id="hamburger"></i></div>
+			</a>
+			<ul class="hidden-phone">
+				<a href="resumen.html"><li class="normal" id="home"><i class="fi-home"></i></li></a>
+				<li class="separador"> </li>
+				<a href="agenda.html"><li class="normal">Agenda</li></a>
+				<li class="separador"> </li>
+				<a href="estadisticas.html"><li class="normal">Estadisticas</li></a>
+				<li class="separador"> </li>
+				<a href="pacientes.html"><li class="normal">Pacientes</li></a>
+				<li class="separador"> </li>
+				<a href="nomina.html"><li class="normal">Nomina</li></a>
+			</ul>
+		</div>
+	</header>
+	<div id="movileNav" class="hidden">
+		<div class="visible-phone">
+			<a href="resumen.html"><div class="normal">Resumen</div></a>
+			<div class="separador"> </div>
+			<a href="agenda.html"><div class="normal">Agenda</div></a>
+			<div class="separador"> </div>
+			<a href="estadisticas.html"><div class="normal">Estadisticas</div></a>
+			<div class="separador"> </div>
+			<a href="pacientes.html"><div class="normal">Pacientes</div></a>
+			<div class="separador"> </div>
+			<a href="nomina.html"><div class="normal">Nomina</div></a>
+			
+			<div class="separador2"> </div>
+
+			<a href="#"><div class="normal"><i class="fi-wrench"></i> Opciones y permisos</div></a>
+			<div class="separador"> </div>
+			<a href="index.html"><div class="normal"><i class="fi-power"></i> Cerrar sesión</div></a>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var notificationListActive = false;
+		function notificationButton(){
+			if(notificationListActive){
+				document.getElementById('notification').className = "hidden";
+				notificationListActive = false;
+			}
+			else{
+				document.getElementById('notification').className="active";
+				notificationListActive = true;
+			}
+			if(movileNavButtonActive){
+				document.getElementById('movileNav').className = "hidden";
+				movileNavButtonActive = false;
+			}
+		}
+	</script>
+	<div id="notification" class="hidden">
+		<a ><div class="noti"><i class="fi-mail high" ></i> Nuevo mensaje de Dr Hernandez</div></a>
+		<a ><div class="noti"><i class="fi-torsos-all medium"></i> 4 personas han sacado cita hoy</div></a>
+		<a ><div class="noti"><i class="fi-shield low"></i> Hay 3 nuevas actualizaciones de sistema</div></a>
+		<a ><div class="noti"><i class="fi-mail medium" ></i> Nuevo mensaje de paciente</div></a>
+		<a ><div class="noti"><i class="fi-torsos-all medium"></i> 2 personas han completado tratamiento hoy</div></a>
+		<a ><div class="noti"><i class="fi-shield high"></i> Hay 3 nuevas actualizaciones de sistema recomendadas</div></a>
+	</div>
+	<section id="pagePrin">
+		<div id="down-bar" onmouseout="escondeMenuUsuario()">
+			<div id="titulo">
+				<h1>Pacientes</h1>
+			</div>
+			<script type="text/javascript">
+				function despliegueMenuUsuario(){
+					document.getElementById("user-menu").className = "visible";
+				}
+				function escondeMenuUsuario(){
+					document.getElementById("user-menu").className = "hidden";
+				}
+			</script>
+			<div id="user" class="hidden-phone">
+				<a onmouseover="despliegueMenuUsuario()">
+					<p><i class="fi-torso icon"> </i> Dr. Alfredo Leonel &nbsp;<i class="fi-arrow-down"></i></p>
+				</a>
+				<div id="user-menu" class="hidden" onmouseover="despliegueMenuUsuario()">
+					<a href="#"><div><i class="fi-wrench"></i> Opciones y permisos</div></a>
+					<a href="index.html"><div><i class="fi-power"></i> Cerrar sesión</div></a>
+				</div>
+			</div>
+		</div>
+
+<!--INICIO - El contenido encerrado en estos comentarios es intercambiable por las paginas de la plataforma -->
+	<div class="row" id="pageResumen">
+		
+	</div>
+<!--FINAL - El contenido encerrado en estos comentarios es intercambiable por las paginas de la plataforma -->
+	</section>
+</body>
+    <script src="dist/js/foundation.min.js"></script>
+    <script src="dist/js/foundation/foundation.clearing.js"></script>
+    <script>
+    	$(document).foundation();
+    </script>
+</html>
